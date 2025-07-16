@@ -488,8 +488,76 @@
       justify-content: center;
     }
 
+    @media screen and (max-width: 768px) {
+      /* Hide or resize big images */
+      .kakashi-img,
+      .bookreading2-img,
+      .think-img {
+        display: none;
+      }
 
+      header {
+        padding: 100px 20px 40px;
+      }
 
+      .about-box {
+        padding: 20px;
+        font-size: 1rem;
+        text-align: center;
+      }
+
+      .books-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .book-card {
+        width: 85%;
+        height: auto;
+      }
+
+      .book-card-inner {
+        height: auto;
+      }
+
+      .book-front,
+      .book-back {
+        font-size: 1rem;
+        padding: 16px;
+      }
+
+      .book-back img {
+        width: 100px;
+        margin-bottom: 10px;
+      }
+
+      #books {
+        margin-left: 0;
+        padding: 0 15px;
+      }
+
+      #books h2 {
+        font-size: 1.6rem;
+      }
+
+      .contact-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      #contact-bar {
+        margin: 40px 10px;
+        padding: 15px;
+      }
+
+      .contact-label {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+      }
+    }
+
+    
   </style>
 </head>
 <body>
