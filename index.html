@@ -488,12 +488,32 @@
       justify-content: center;
     }
 
-    @media screen and (max-width: 768px) {
-      /* Hide or resize big images */
-      .kakashi-img,
-      .bookreading2-img,
-      .think-img {
-        display: none;
+    @media (max-width: 500px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+
+      nav.shrink {
+        padding: 8px 20px;
+      }
+
+      .nav-left h1 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .nav-right {
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .nav-right a,
+      .nav-right button {
+        font-size: 0.85rem;
+        padding: 6px 10px;
       }
 
       header {
@@ -506,19 +526,35 @@
         text-align: center;
       }
 
+      /* Fix book section layout */
+      #books {
+        margin-left: 0;
+        margin-top: 40px;
+        padding: 0 10px;
+      }
+
+      #books h2 {
+        font-size: 1.3rem;
+      }
+
       .books-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 24px;
+        width: 100%;
       }
 
       .book-card {
-        width: 85%;
-        height: auto;
+        width: 100%;
+        max-width: 320px;
+        min-width: 220px;
+        height: 320px;
+        margin: 0 auto;
       }
 
       .book-card-inner {
-        height: auto;
+        height: 100%;
       }
 
       .book-front,
@@ -532,32 +568,22 @@
         margin-bottom: 10px;
       }
 
-      #books {
-        margin-left: 0;
-        padding: 0 15px;
-      }
-
-      #books h2 {
-        font-size: 1.6rem;
-      }
-
-      .contact-content {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      #contact-bar {
-        margin: 40px 10px;
-        padding: 15px;
-      }
-
-      .contact-label {
-        font-size: 0.95rem;
-        margin-bottom: 10px;
+      /* Fix image alignment */
+      .kakashi-img,
+      .bookreading2-img,
+      .think-img {
+        position: static !important;
+        display: block !important;
+        margin: 0 auto 20px auto !important;
+        height: auto !important;
+        max-width: 90vw !important;
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
 
-    
+
+
   </style>
 </head>
 <body>
