@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neelashish | Data Science Portfolio</title>
+  <style>
+    html, body {
+      overflow-x: hidden;
+    }
+
+    :root {
+      --bg-color: #fff;
+      --text-color: #000;
+      --accent-color: #2196f3;
+      --blur-border: rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.alt-theme {
+      --bg-color: #1f1b24;
+      --text-color: #f3e5f5;
+      --accent-color: #ff4081;
+      --blur-border: rgba(255, 255, 255, 0.2);
+      background-image: url('1stBG.jpg'); /* ✅ Your custom image */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      max-width: 1200px;
+      background: var(--bg-color);
+      border: 1px solid var(--blur-border);
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      z-index: 1000;
+      transition: all 0.3s ease-in-out;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
+
+    nav.shrink {
+      padding: 10px 20px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-left h1 {
+      margin: 0;
+      color: var(--accent-color);
+      font-size: 1.5rem;
+    }
+
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent-color);
+    }
+
+    .nav-right {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 12px;
+      max-width: 100%;
+    }
+
+    .nav-right a,
+    .nav-right button {
+      text-decoration: none;
+      background: transparent;
+      color: var(--text-color);
+      border: 1px solid var(--blur-border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .nav-right a:hover,
+    .nav-right button:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 500px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+      }
+
+      nav.shrink {
+        padding: 8px 20px;
+      }
+
+      .nav-left h1 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      .nav-right {
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .nav-right a,
+      .nav-right button {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+      }
+    }
+
+    header {
+      padding: 160px 40px 60px;
+      text-align: center;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--blur-border);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      color: var(--text-color); /* Inherit text color from theme */
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.alt-theme .glass-box {
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+    }
+    body.alt-theme #books h2 {
+      color: rgb(0, 0, 0);
+    }
+
+
+    body.alt-theme .book-front,
+    body.alt-theme .book-back {
+      background: rgba(0, 0, 0, 0.85); /* Dark card background */
+      color: white; /* White text */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    body.alt-theme #contact,
+    body.alt-theme #contact h2,
+    body.alt-theme #contact p {
+      color: #000 !important;
+    }
+
+    body.alt-theme #contact a {
+      color: #2196f3 !important;
+    }
+
+
+
+    .typing-text {
+      font-size: 1.4rem;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid var(--accent-color);
+      width: 0;
+      margin: 0 auto;
+      animation: typing 4s steps(40, end) forwards, blink 0.7s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: var(--accent-color); }
+      50% { border-color: transparent; }
+    }
+
+    section {
+      padding: 40px;
+      max-width: 1000px;
+      margin: 100px auto 30px;
+    }
+
+    .about-box {
+      background: var(--bg-color);
+      border: 1px solid var(--blur-border);
+      border-radius: 20px;
+      padding: 40px 50px;
+      max-width: 750px;
+      margin: auto;
+      font-size: 1.05rem;
+      box-shadow: 0 6px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .kakashi-img {
+      position: absolute;
+      top: -75px;
+      left: 180px;
+      transform: translateX(-50%);
+      height: 910px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+    }
+
+    .think-img {
+      position: absolute;
+      top: 1247px;
+      left: 680px;
+      transform: translateX(-50%) translateY(40px);
+      height: 300px;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+      transition: all 0.8s ease;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    .think-img.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      animation: fadeSlideUp 0.6s ease-out forwards;
+    }
+
+
+
+    .bookreading2-img {
+      position: absolute;
+      top: 790px;
+      left: 1400px;
+      transform: translateX(-50%);
+      height: 500px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 2;
+    }
+
+    h2 {
+      border-bottom: 2px solid #444;
+      padding-bottom: 5px;
+      color: var(--text-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      color: #666;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .books-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .book-card {
+      width: 220px;
+      height: 320px;
+      perspective: 1000px;
+    }
+
+    .book-card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      border-radius: 12px;
+    }
+
+    .book-card:hover .book-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .book-front, .book-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+    }
+
+    .book-front {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--blur-border);
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--text-color);
+    }
+
+    .book-back {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid var(--blur-border);
+      transform: rotateY(180deg);
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .book-back img {
+      width: 120px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    /* Disable transitions during theme change */
+    html.theme-transition * {
+      transition: none !important;
+    }
+    .contact {
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      max-width: 700px;
+      margin: 40px auto;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .contact-icons a {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-icons img {
+      width: 50px;
+      height: 50px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .contact-icons a:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.2);
+    }
+
+    #contact-bar {
+      background: rgba(255, 255, 255, 0.1); /* translucent background */
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 700px;
+      margin: 80px auto;
+      transition: all 0.6s ease;
+    }
+
+    body.alt-theme #contact-bar {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    #contact-bar.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInUp 0.6s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+    .contact-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-label {
+      font-size: 1rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-right: 12px;
+    }
+
+    .contact-content a img {
+      width: 36px;
+      height: 36px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+   .contact-content a:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.2) rotate(2deg);
+      box-shadow: 0 0 10px rgba(33, 150, 243, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    }
+
+    #books {
+      margin-left: 15%;
+      margin-top: 75px;
+    }
+    #books h2 {
+      text-align: center;
+      margin-left: 0;
+    }
+
+    .books-container {
+      justify-content: center;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-left">
+      <img src="dpkakashi.jpg" alt="Profile" class="profile-pic" />
+      <h1>Neelashish</h1>
+    </div>
+    <div class="nav-right">
+      <a href="projects.html">Projects</a>
+      <a href="skills.html">Skills</a>
+      <button onclick="toggleMode()">🌓</button>
+    </div>
+  </nav>
+
+  <header>
+    <div class="glass-box">
+      <p class="typing-text">Beginner Data Science Enthusiast | R & Python Learner</p>
+    </div>
+  </header>
+
+  <section>
+    <img src="kakashi.png" alt="Kakashi Sitting" class="kakashi-img" />
+    <div class="about-box">
+      <h2>About Me</h2>
+      <p>
+        I'm a first-year undergraduate student exploring the world of data science.
+        I work with R and Python to analyze data and generate visual insights.
+        See my project work by clicking the Projects button!
+      </p>
+    </div>
+  </section>
+
+  <section id="books">
+    <img src="bookreading2.png" alt="Kakashi book reading" class="bookreading2-img" />
+    <h2>Stories & Lessons I Carry</h2>
+    <div class="books-container">
+      <div class="book-card">
+        <div class="book-card-inner">
+          <div class="book-front">The Secret</div>
+          <div class="book-back">
+            <img src="the_secret.jpg" alt="The Secret">
+            <p>Discover the power of positive thinking and how thoughts shape your reality.</p>
+          </div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-card-inner">
+          <div class="book-front">Ikigai</div>
+          <div class="book-back">
+            <img src="https://m.media-amazon.com/images/I/71tbalAHYCL._SY342_.jpg" alt="Ikigai">
+            <p>Find your reason for being and live longer with joy and purpose.</p>
+          </div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-card-inner">
+          <div class="book-front">Atomic Habits</div>
+          <div class="book-back">
+            <img src="https://m.media-amazon.com/images/I/91bYsX41DVL._SY342_.jpg" alt="Atomic Habits">
+            <p>Small habits that lead to remarkable changes in life and productivity.</p>
+          </div>
+        </div>
+      </div>
+      <div class="book-card">
+        <div class="book-card-inner">
+          <div class="book-front">Mistborn</div>
+          <div class="book-back">
+            <img src="mistborn.jpg" alt="Mistborn">
+            <p>A fantasy world where ash falls from the sky and a revolution brews in the shadows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section style="height: 35px;"></section>
+
+  <img src="think.png" alt="Thinking Kakashi" class="think-img" id="kakashiThink" />
+
+ <section id="contact-bar" class="hidden">
+    <div class="contact-content">
+      <span class="contact-label">📬 Contact</span>
+      <a href="https://mail.google.com/mail/?view=cm&to=neelashish0@gmail.com" target="_blank" title="Email">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" />
+      </a>
+      <a href="https://github.com/neelashish" target="_blank" title="GitHub">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+      </a>
+      <a href="https://x.com/Neelashish_08" target="_blank" title="Twitter/X">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/X_logo.jpg/1200px-X_logo.jpg" alt="Twitter/X" />
+      </a>
+    </div>
+  </section>
+
+
+
+
+  <footer>&copy; 2025 Neelashish. All rights reserved.</footer>
+
+  <script>
+    function toggleMode() {
+      document.documentElement.classList.add('theme-transition');
+      document.body.classList.toggle('alt-theme');
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+      }, 0);
+    }
+
+    // 🔹 Navbar shrink on scroll
+    const navbar = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add("shrink");
+      } else {
+        navbar.classList.remove("shrink");
+      }
+    });
+
+    // 🔹 Contact bar + Kakashi Think visibility sync
+    const contactBar = document.getElementById('contact-bar');
+    const kakashiThink = document.getElementById('kakashiThink');
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          contactBar.classList.add('visible');
+          contactBar.classList.remove('hidden');
+          kakashiThink.classList.add('visible'); // 🔄 sync animation
+        } else {
+          contactBar.classList.remove('visible');
+          contactBar.classList.add('hidden');
+          kakashiThink.classList.remove('visible');
+        }
+      },
+      {
+        threshold: 0.2
+      }
+    );
+
+    observer.observe(contactBar);
+  </script>
+
+
+
+</body>
+</html>

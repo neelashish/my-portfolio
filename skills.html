@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills | Neelashish</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #eee;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 12px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    header {
+      padding: 100px 20px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 🎥 Background video */
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    h1 {
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+      transform: translateY(40px);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .skill-card.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .skill-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+      transform: translateY(-5px) scale(1.03);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #888;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="index.html" class="back-btn">← Back</a>
+
+  <header>
+    <!-- 🔥 Video background (make sure 'minatovideo.mp4' is in the same folder) -->
+    <video autoplay muted loop playsinline>
+      <source src="minatovideo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="glass-box">
+      <h1>My Skills</h1>
+      <div class="skills-grid" id="skills-grid">
+        <div class="skill-card">Python</div>
+        <div class="skill-card">R</div>
+        <div class="skill-card">ggplot2</div>
+        <div class="skill-card">dplyr</div>
+        <div class="skill-card">Data Cleaning</div>
+        <div class="skill-card">Exploratory Data Analysis</div>
+        <div class="skill-card">Data Visualization</div>
+      </div>
+    </div>
+  </header>
+
+  <footer>&copy; 2025 Neelashish. All rights reserved.</footer>
+
+  <script>
+    const cards = document.querySelectorAll('.skill-card');
+
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.9;
+
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+        if (cardTop < trigger) {
+          card.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+  </script>
+</body>
+</html>
